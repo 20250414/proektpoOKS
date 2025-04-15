@@ -6,8 +6,145 @@
 </head>
 <body>
     <div class="header">
-        (<h1>Отчет по лабораторной работе</h1>
+        <h1>Отчет по лабораторной работе</h1>
     </div>
+    <div>
+        <h2>Создать репозиторий github (или аналог), настроить пару ключей для доступа</h2>
+        <ol>
+        <li>Создали аккаунт 20250414 на github.</li>
+        <li>Создали репозиторий proektpoOKS в нашем аккаунте.</li>
+        <li>В репозитории размещен один файл README.md</li>
+ 
+    <img src="img/image001.png" alt="Создание репозитория">
+    <li>На компьютере установили программу Git Bash v.2.49.0-64-bit доступную по <a href="https://objects.githubusercontent.com/github-production-release-asset-2e65be/23216272/c6c1c87b-d3af-4ae8-9cd6-78a4aea72a77?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250414%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250414T070510Z&X-Amz-Expires=300&X-Amz-Signature=a258d7f731444ca7b651ec4d4090b19d79e3b99f46955b97895cbf16ddcd4a93&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3DGit-2.49.0-64-bit.exe&response-content-type=application%2Foctet-stream"> ссылке</a>   </li> 
+    <img src="img/image002.png" alt="Установка Git BAsh">
+
+    <li>Осуществили начальную настройку параметров программы Git Bash, просмотрели содержимое текущей папки</li>
+    <div class="kod">
+     git config --global user.name "20250414"<br>
+     git config --global user.email "proektpoOKS@mail.ru"<br>
+     ls<br> 
+    </div>
+    <img src="img/image003.png" alt="Просмотр содержимого папки"> <br>
+    <p>Создали новую папку OKS, инициализировали её как локальный репозиторий</p>
+    <div class="kod">
+    mkdir OKS <br>
+    cd OKS<br>
+    git init<br>
+       </div>
+       <img src="img/image004.png" alt="Инициализация репозитория"> <br><br>
+    <li> Создали пару SSH-ключей (приватный – SSH1, публичный – SSH1.pub)</li>
+    <div class="kod">ssh-keygen -t ed25519</div>
+    <img src="img/image005.png" alt="Создание ключей"> <br><br>   
+
+   <li> Добавили на компьютере в файл \etc\ssh_config следующую запись:</li>
+   <div class="kod">
+           Host git@github.com:20250414/proektpoOKS.git <br>  
+            HostName git@github.com:20250414/proektpoOKS.git<br>  
+            User 20250414<br>  
+            IdentityFile g:/Programms/Git/etc/ssh/SSH1<br>  
+            IdentitiesOnly yes<br>  
+   </div>
+    <p>Также подключили созданный приватный ключ</p> 
+    <img src="img/image006.png" alt="Подключение приватного ключа"> <br><br>   
+    <li>Добавили в раздел <a href="https://github.com/settings/keys""> https://github.com/settings/keys </a>  информацию для SSH keys, содержащуюся в ранее созданном файле SSH1.pub</li>
+    <img src="img/image007.png" alt="Подключение публичного ключа"> <br><br>   
+    <li>Подключили локальный репозиторий к GitHub </li> 
+    <div class="kod">
+    git remote add origin git@github.com:20250414/proektpoOKS.git
+    </div>
+    <li> Клонировали репозиторий proektpoOKS на компьютер </li>
+    <div class="kod">
+    git clone git@github.com:20250414/proektpoOKS.git
+</div>
+<img src="img/image008.png" alt="Клонирование репозитория на компьютер"> <br>
+<p>На компьютере появилась папка с файлом README.md</p>
+<img src="img/image009.png" alt="Файл на компьютере"> <br> <br> 
+</ol>
+</div>
     
+<div>
+    <h2>Конфигурирование устройств сети</h2>
+<ol>
+    <li>Настроить PC</li>
+    <p>Для настройки компьютеров, выбираем соответствующий хост. На вкладке Config в разделе FastEthernet в полях Ipv4 Address и Subnet Mask прописываем необходимые сетевые конфигурации. Далее выбираем в этой же вкладке раздел Settings и в поле Default Gateway указываем адрес соответствующего интерфейса маршрутизатора, к которому подключен коммутатор.
+    Для host_1:</p>
+    <img src="img/image010.png" > 
+    <img src="img/image011.png" > <br> 
+   <p> Для host_2:</p>
+   <img src="img/image012.png" > 
+   <img src="img/image013.png" > <br> 
+   <p> Для host_3:</p>
+   <img src="img/image014.png" > 
+   <img src="img/image015.png" > <br> 
+   <p> Для host_4:</p>
+   <img src="img/image016.png" > 
+   <img src="img/image017.png" > <br> 
+
+<li> Настроить маршрутизатор R1</li>
+<p>Нажимаем на изображение маршрутизатора. Выбираем вкладку CLI. Нажимаем Enter и набираем следующую последовательность команд для конфигурирования интерфейсов маршрутизатора:</p>
+<div class="kod">
+    //для входа в маршрутизатор<br> 
+    Router>enable<br> 
+    //для входа в режим конфигурирования маршрутизатора<br> 
+    Router#config terminal<br> 
+    Enter configuration commands, one per line. End with CNTL/Z.<br> 
+    // изменение имени хоста<br> 
+    Router(config)#hostname BELOV<br> 
+    BELOV(config)#<br> 
+    // выбор интерфейса маршрутизатора<br> 
+    BELOV(config)#interface fa0/0<br> 
+    //установка IP-адреса интерфейса<br> 
+    BELOV(config-if)#ip address 192.168.1.1 255.255.255.0<br> 
+    // запрет выключения интерфейса<br> 
+    BELOV(config-if)#no shutdown<br> 
+    // выход из конфигурирования интерфейса<br> 
+    BELOV(config-if)#exit<br> 
+    // выбор нового интерфейса маршрутизатора<br> 
+    BELOV(config)#interface fa0/1<br> 
+    // установка IP-адреса интерфейса<br> 
+    BELOV(config-if)#ip address 172.16.0.1 255.255.0.0<br> 
+    // запрет выключения интерфейса<br> 
+    BELOV(config-if)#no shutdown<br> 
+    // выход из конфигурирования интерфейса<br> 
+    BELOV(config-if)#exit<br> 
+    //выход из режима конфигурирования маршрутизатора<br> 
+    BELOV(config)#exit<br> 
+    BELOV#<br> 
+    %SYS-5-CONFIG_I: Configured from console by console<br> 
+    //запись текущей конфигурации в память маршрутизатора<br> 
+    BELOV#write memory<br> 
+    Building configuration...<br> 
+    [OK]<br> 
+
+    <p>В результате получим:</p>
+    <img src="img/image018.png" > <br> 
+<li>Проверка связности между двумя сегментами сети командой ping</li>
+<p>Выполним пинг с host_1 до всех других устройств</p>
+<img src="img/image019.png" > <br> 
+<p>Выполним пинг с host_3 до всех других устройств:</p>
+<img src="img/image020.png" > <br> 
+<p>Видно, что все пинги проходят. Все устройства связаны между собой!</p>
+</div>
+
+<div>
+    <h2>Создание веб-страниц с использованием HTML и CSS</h2>
+<p>CSS (Cascading Style Sheets) показывает браузеру, какие свойства есть у определенных элементов на странице: шрифт текста, размер изображений и блоков.
+    <br>
+    HTML-элементы — основа языка HTML. 
+    Каждый HTML-документ состоит из дерева HTML-элементов и текста. Каждый HTML-элемент обозначается начальным (открывающим) и конечным (закрывающим) тегом. Открывающий и закрывающий теги содержат имя элемента.
+    </p>
+
+
+
+
+
+
+
+</ol>
+
+
+
+</div>
 </body>
 </html>
