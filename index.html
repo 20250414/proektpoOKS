@@ -90,30 +90,30 @@
     Router#config terminal<br> 
     Enter configuration commands, one per line. End with CNTL/Z.<br> 
     // изменение имени хоста<br> 
-    Router(config)#hostname BELOV<br> 
-    BELOV(config)#<br> 
+    Router(config)#hostname ASABIN<br> 
+    ASABIN(config)#<br> 
     // выбор интерфейса маршрутизатора<br> 
-    BELOV(config)#interface fa0/0<br> 
+    ASABIN(config)#interface fa0/0<br> 
     //установка IP-адреса интерфейса<br> 
-    BELOV(config-if)#ip address 192.168.1.1 255.255.255.0<br> 
+    ASABIN(config-if)#ip address 192.168.2.1 255.255.255.0<br> 
     // запрет выключения интерфейса<br> 
-    BELOV(config-if)#no shutdown<br> 
+    ASABIN(config-if)#no shutdown<br> 
     // выход из конфигурирования интерфейса<br> 
-    BELOV(config-if)#exit<br> 
+    ASABIN(config-if)#exit<br> 
     // выбор нового интерфейса маршрутизатора<br> 
-    BELOV(config)#interface fa0/1<br> 
+    ASABIN(config)#interface fa0/1<br> 
     // установка IP-адреса интерфейса<br> 
-    BELOV(config-if)#ip address 172.16.0.1 255.255.0.0<br> 
+    ASABIN(config-if)#ip address 172.16.2.1 255.255.0.0<br> 
     // запрет выключения интерфейса<br> 
-    BELOV(config-if)#no shutdown<br> 
+    ASABIN(config-if)#no shutdown<br> 
     // выход из конфигурирования интерфейса<br> 
-    BELOV(config-if)#exit<br> 
+    ASABIN(config-if)#exit<br> 
     //выход из режима конфигурирования маршрутизатора<br> 
-    BELOV(config)#exit<br> 
-    BELOV#<br> 
+    ASABIN(config)#exit<br> 
+    ASABIN#<br> 
     %SYS-5-CONFIG_I: Configured from console by console<br> 
     //запись текущей конфигурации в память маршрутизатора<br> 
-    BELOV#write memory<br> 
+    ASABIN#write memory<br> 
     Building configuration...<br> 
     [OK]<br> 
 
